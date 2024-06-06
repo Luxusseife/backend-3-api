@@ -55,7 +55,7 @@ const Job = mongoose.model("Job", jobSchema);
 // Hämtar lagrade jobb.
 app.get("/job", async (req, res) => {
     try {
-        let result = await Job.find({});
+        let result = await Job.find({}).sort({ startdate: -1 });
 
         // Kontroll av innehåll och meddelande om collection är tom.
         if (result.length === 0) {
